@@ -1,0 +1,27 @@
+body {
+    margin: 10px;
+}
+
+/* Banks' points list header row */
+.pointsListHeader {
+    color: blue;
+    text-align: center;
+}
+
+/* points list flex table */
+.pointsList {
+    border: 1px solid silver;
+    padding: 2px;
+    margin-bottom: 6px;
+}
+
+/* Each search panel */
+.searchPanel {
+    width: 300px;
+}
+
+/* All left panel */
+.leftPanel {
+    width: 350px;
+    margin-left: 10px;
+}
