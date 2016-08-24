@@ -9,15 +9,6 @@
     </welcome-file-list>
 
     <!-- Servlets -->
-    <!-- <servlet>
-        <servlet-name>cft.exam.SearchInterface SearchTerminalService</servlet-name>
-        <servlet-class>cft.exam.server.SearchTerminalServiceImpl</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>cft.exam.SearchInterface SearchTerminalService</servlet-name>
-        <url-pattern>/cft.exam.SearchInterface/searchPoints</url-pattern>
-    </servlet-mapping> -->
 
     <servlet>
         <servlet-name>searchTerminalServiceImpl</servlet-name>

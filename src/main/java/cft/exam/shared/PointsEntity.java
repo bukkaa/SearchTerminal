@@ -3,7 +3,6 @@ package cft.exam.shared;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "points", schema = "cft_exam")
 public class PointsEntity implements IsSerializable {

@@ -8,7 +8,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
-import java.util.Arrays;
+import java.util.List;
+
 
 public class SearchInterface implements EntryPoint {
     private VerticalPanel leftPanel = new VerticalPanel();
@@ -88,56 +89,65 @@ public class SearchInterface implements EntryPoint {
         // Listen for keyboard events on the Search button and text boxes
         searchButton.addKeyDownHandler(enterListen);
         inputCity.addKeyDownHandler(enterListen);
-        inputBank.addKeyDownHandler(enterListen);
+        inputBank.addKeyDownHandler(new KeyDownHandler() {
+            @Override
+            public void onKeyDown(KeyDownEvent event) {
+                if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    // Move cursor focus to the City input box
+                    inputBank.setFocus(false);
+                    inputCity.setFocus(true);
+                }
+            }
+        });
     }
 
     /**
      * Validate and assemble the inputs for searching
      */
     private void makeSearchQuery() {
+        final String search;
         final String bank = inputBank.getText().toLowerCase().trim();
+        final String city = inputCity.getText().toLowerCase().trim();
 
         // Bank name must be shorter than 20 chars and consist of numbers and lowercase letters only
-        if ( (!bank.equals("")) && (!bank.matches("^[0-9a-z]{1,20}$")) ) {
+        if ( !bank.matches("^[0-9a-z]{1,20}$") ) {
             Window.alert("'" + bank + "' is not a valid bank name");
             inputBank.selectAll();
             return;
         }
+        // Create a temporary search String
+        String searchTemp = bank;
 
-        // TODO Make a quick ask to DB for all banks with inserted name
-        //renderResults(getPoints(bank));
-
-        final String city = inputCity.getText().toLowerCase().trim();
+        // City name must be shorter than 20 chars and consist of numbers and lowercase letters only
         if ( (!city.equals("")) && (!city.matches("^[0-9a-z]{1,20}$")) ) {
             Window.alert("'" + city + "' is not a valid city name");
             inputCity.selectAll();
             return;
         }
-        // Move cursor focus to the City input box
-        inputBank.setFocus(false);
-        inputCity.setFocus(true);
 
-        // Assemble the inputs for searching
-        final String search = bank + "|" + city;
+        // Add the City name to the temporary search
+        if (!city.isEmpty()) searchTemp += "|" + city;
 
-        // Get the specified Points from server
         // Initialize the RPC service proxy
         if (rpcService == null) rpcService = GWT.create(SearchTerminalService.class);
 
         // Set up the callback object
-        AsyncCallback<PointsEntity[]> callback = new AsyncCallback<PointsEntity[]>() {
+        AsyncCallback<List<PointsEntity>> callback = new AsyncCallback<List<PointsEntity>>() {
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Something wrong with AsyncCallback!");
             }
 
             @Override
-            public void onSuccess(PointsEntity[] result) {
+            public void onSuccess(List<PointsEntity> result) {
                 renderResults(result);
             }
         };
 
-        // Make the call to the server
+        // Init a final search String
+        search = searchTemp;
+
+        // Get the specified Points from server
         rpcService.getPoints(search, callback);
     }
 
@@ -145,11 +155,11 @@ public class SearchInterface implements EntryPoint {
      * Add found points to the Right Panel
      * @param points
      */
-    private void renderResults(PointsEntity[] points) {
+    private void renderResults(List<PointsEntity> points) {
         int row = 1;
         String fullAddress;
 
-        Window.alert(Arrays.toString(points));
+        rightPanel.setVisible(true);
 
         for (PointsEntity point : points) {
             rightPanel.setText(row, 0, point.getBankname());
