@@ -17,20 +17,30 @@ public class SearchTerminalServiceImpl extends RemoteServiceServlet implements S
     private Session session;
 
     /**
+     * Constructor with Hibernate session initializing
+     */
+    public SearchTerminalServiceImpl() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        session = sessionFactory.openSession();
+    }
+
+    /**
      * Get the specified Points from DB (MySQL) through Hibernate
      * @param search the assembled and validated inputs from TextBoxes
      * @return  the array of PointsEntity
      */
+
+    @Override
     public List<PointsEntity> getPoints(String search) {
 
-        String[] inputs = search.split("|");
+        String[] inputs = search.split(" ");
         Query query;
 
         // TODO Ошибка при иниципализации сессии гибернейт. NoSuchMethodError и что то еще
-        
+
         // Initialize the Hibernate session
-        sessionFactory = HibernateUtil.getSessionFactory();
-        session = sessionFactory.openSession();
+//        sessionFactory = HibernateUtil.getSessionFactory();
+//        session = sessionFactory.openSession();
 
         // Make a queries to Hibernate for specified Points
         query = session.createQuery("from PointsEntity");
@@ -80,5 +90,13 @@ public class SearchTerminalServiceImpl extends RemoteServiceServlet implements S
 //        point5.setAddress("ADDRESS POINT 5");
 //        point5.setCountry("Russia");
 //        point5.setCity("MSK");
+//
+//        pointsList.add(point1);
+//        pointsList.add(point2);
+//        pointsList.add(point3);
+//        pointsList.add(point4);
+//        pointsList.add(point5);
+
+        //return pointsList;
     }
 }

@@ -126,7 +126,7 @@ public class SearchInterface implements EntryPoint {
         }
 
         // Add the City name to the temporary search
-        if (!city.isEmpty()) searchTemp += "|" + city;
+        if (!city.isEmpty()) searchTemp += " " + city;
 
         // Initialize the RPC service proxy
         if (rpcService == null) rpcService = GWT.create(SearchTerminalService.class);
