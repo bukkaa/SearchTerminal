@@ -26,27 +26,23 @@ public class SearchTerminalServiceImpl extends RemoteServiceServlet implements S
 
     /**
      * Get the specified Points from DB (MySQL) through Hibernate
-     * @param search the assembled and validated inputs from TextBoxes
+     * @param search the validated input from TextBox
      * @return  the array of PointsEntity
      */
-
     @Override
     public List<PointsEntity> getPoints(String search) {
 
-        String[] inputs = search.split(" ");
         Query query;
 
         // Send the full table to the GWT Module Loading
-        if (inputs[0].equals("onModuleLoad")) {
-            query = session.createQuery("from PointsEntity");
+        if (search.equals("onModuleLoad")) {
+            query = session.createQuery("from PointsEntity where bankname = 'vtb'");
             pointsList = query.list();
         }
         else {
             // Make a query to Hibernate for specified Points
-            query = session.createQuery("from PointsEntity where bankname = :bank and city = :city");
-            query.setParameter("bank", inputs[0]);
-            query.setParameter("city", "*");
-            if (inputs.length == 2) query.setParameter("city", inputs[1]);
+            query = session.createQuery("from PointsEntity where bankname = '" + search + "'");
+            //query.setParameter("bank", search);
             pointsList = query.list();
         }
 
