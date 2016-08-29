@@ -133,6 +133,9 @@ public class SearchInterface implements EntryPoint {
         int row = 1;
         String fullAddress;
 
+        // Cleaning table from last query
+        rightPanel.removeAllRows();
+
         rightPanel.setVisible(true);
 
         for (PointsEntity point : points) {

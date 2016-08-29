@@ -36,7 +36,7 @@ public class SearchTerminalServiceImpl extends RemoteServiceServlet implements S
 
         // Send the full table to the GWT Module Loading
         if (search.equals("onModuleLoad")) {
-            query = session.createQuery("from PointsEntity where bankname = 'vtb'");
+            query = session.createQuery("from PointsEntity");
             pointsList = query.list();
         }
         else {
