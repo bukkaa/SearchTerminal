@@ -12,7 +12,7 @@
 
     <servlet>
         <servlet-name>searchTerminalServiceImpl</servlet-name>
-        <servlet-class>cft.exam.server.SearchTerminalServiceImpl</servlet-class>
+        <servlet-class>test.gwt.hibernate.server.SearchTerminalServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>

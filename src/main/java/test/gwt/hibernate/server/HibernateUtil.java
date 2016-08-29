@@ -1,4 +1,4 @@
-package cft.exam.server;
+package test.gwt.hibernate.server;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -13,7 +13,8 @@ public class HibernateUtil {
 
     private static SessionFactory sessionFactory = buildSessionFactory();
 
-    private static SessionFactory buildSessionFactory() {
+    protected static SessionFactory buildSessionFactory() {
+        // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // Configures settings from hibernate.cfg.xml
                 .build();

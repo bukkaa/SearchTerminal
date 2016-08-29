@@ -1,11 +1,11 @@
-package cft.exam.shared;
+package test.gwt.hibernate.shared;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "points", schema = "cft_exam")
-public class PointsEntity implements IsSerializable {
+public class PointsEntity implements Serializable {
     private int id;
     private String bankname;
     private String city;

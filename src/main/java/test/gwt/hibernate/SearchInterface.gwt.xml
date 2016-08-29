@@ -3,13 +3,11 @@
 <module rename-to="SearchInterface">
 
     <inherits name='com.google.gwt.user.User'/>
-    <inherits name="cft.exam.SearchInterface"/>
     <inherits name="com.google.gwt.user.theme.chrome.Chrome" />
 
-    <entry-point class='cft.exam.client.SearchInterface'/>
+    <entry-point class='test.gwt.hibernate.client.SearchInterface'/>
 
     <source path="server"/>
     <source path="shared"/>
     <source path="client"/>
-    <source path="cft.exam.server.HibernateUtil"/>
 </module>

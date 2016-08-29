@@ -9,6 +9,15 @@
         <setting name="webFacet" value="Web" />
       </configuration>
     </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" value="fada3097-7c67-41f8-8e1f-919caffa2398" />
+        </datasource-map>
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
@@ -19,20 +28,8 @@
         </webroots>
       </configuration>
     </facet>
-    <facet type="hibernate" name="Hibernate">
-      <configuration>
-        <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="adeeefc7-a01f-4ae3-a921-d72559c6e03b" />
-        </datasource-map>
-        <naming-strategy-map />
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration />
-    </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -42,6 +39,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="gwt-user" level="project" />
+    <orderEntry type="library" name="com.sun.mail:javax.mail:1.5.6" level="project" />
+    <orderEntry type="library" name="javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: javax:javaee-api:7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.5.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:5.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.0.1.Final" level="project" />
@@ -54,27 +57,5 @@
     <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.1-GA" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.34" level="project" />
-    <orderEntry type="module-library">
-      <library name="Hibernate 4.2.2-4.2.2" type="hibernate">
-        <properties version="4.2.2" />
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/javassist-3.15.0-GA.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/hibernate-core-4.2.2.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/hibernate-commons-annotations-4.0.2.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/dom4j-1.6.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/antlr-2.7.7.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/jboss-logging-3.1.0.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="gwt-user" level="project" />
-    <orderEntry type="library" name="Spring-4.3.1.RELEASE" level="project" />
-    <orderEntry type="library" name="com.sun.mail:javax.mail:1.5.6" level="project" />
-    <orderEntry type="library" name="javax.activation:activation:1.1" level="project" />
-    <orderEntry type="library" name="javax:javaee-api:6.0" level="project" />
   </component>
 </module>

@@ -1,6 +1,6 @@
-package cft.exam.client;
+package test.gwt.hibernate.client;
 
-import cft.exam.shared.PointsEntity;
+import test.gwt.hibernate.shared.PointsEntity;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.List;

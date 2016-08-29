@@ -1,6 +1,6 @@
-package cft.exam.client;
+package test.gwt.hibernate.client;
 
-import cft.exam.shared.PointsEntity;
+import test.gwt.hibernate.shared.PointsEntity;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
