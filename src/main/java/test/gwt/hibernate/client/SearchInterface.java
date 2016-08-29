@@ -68,6 +68,9 @@ public class SearchInterface implements EntryPoint {
         // Associate the Main panel with the HTML host page
         RootPanel.get("searchInterface").add(mainPanel);
 
+        // Rendering full table
+        getPointsFromServer("onModuleLoad");
+
         // Move cursor focus to the Bank input box
         inputBank.setFocus(true);
 
@@ -128,6 +131,37 @@ public class SearchInterface implements EntryPoint {
         // Add the City name to the temporary search
         if (!city.isEmpty()) searchTemp += " " + city;
 
+//        // Initialize the RPC service proxy
+//        if (rpcService == null) rpcService = GWT.create(SearchTerminalService.class);
+//
+//        // Set up the callback object
+//        AsyncCallback<List<PointsEntity>> callback = new AsyncCallback<List<PointsEntity>>() {
+//            @Override
+//            public void onFailure(Throwable caught) {
+//                Window.alert("Something wrong with AsyncCallback!");
+//            }
+//
+//            @Override
+//            public void onSuccess(List<PointsEntity> result) {
+//                renderResults(result);
+//            }
+//        };
+
+        // Init a final search String
+        search = searchTemp;
+
+        // Get the specified Points from server
+        //rpcService.getPoints(search, callback);
+        getPointsFromServer(search);
+    }
+
+    /**
+     * Initialize the RPC service proxy, create the callback object, call the method getPoints on Server
+     * @param search the validated search String
+     */
+
+    public void getPointsFromServer(String search) {
+
         // Initialize the RPC service proxy
         if (rpcService == null) rpcService = GWT.create(SearchTerminalService.class);
 
@@ -143,9 +177,6 @@ public class SearchInterface implements EntryPoint {
                 renderResults(result);
             }
         };
-
-        // Init a final search String
-        search = searchTemp;
 
         // Get the specified Points from server
         rpcService.getPoints(search, callback);

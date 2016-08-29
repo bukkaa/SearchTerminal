@@ -36,26 +36,20 @@ public class SearchTerminalServiceImpl extends RemoteServiceServlet implements S
         String[] inputs = search.split(" ");
         Query query;
 
-        // Make a queries to Hibernate for specified Points
-
-        if (inputs[1].isEmpty()) {
-            query = session.createQuery("from PointsEntity where bankname = " + inputs[0]);
+        // Send the full table to the GWT Module Loading
+        if (inputs[0].equals("onModuleLoad")) {
+            query = session.createQuery("from PointsEntity");
             pointsList = query.list();
-            // Close Hibernate session
-            HibernateUtil.shutdown();
-            return pointsList;
         }
-        else if (!inputs[1].isEmpty())
-        {
-            query = session.createQuery("from PointsEntity where bankname = " + inputs[0] + " and city = " + inputs[1]);
+        else {
+            // Make a query to Hibernate for specified Points
+            query = session.createQuery("from PointsEntity where bankname = :bank and city = :city");
+            query.setParameter("bank", inputs[0]);
+            query.setParameter("city", "*");
+            if (inputs.length == 2) query.setParameter("city", inputs[1]);
             pointsList = query.list();
-            // Close Hibernate session
-            HibernateUtil.shutdown();
-            return pointsList;
         }
 
-        query = session.createQuery("from PointsEntity ");
-        pointsList = query.list();
         // Close Hibernate session
         HibernateUtil.shutdown();
         return pointsList;
