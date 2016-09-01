@@ -1,0 +1,13 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+        "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
+<module rename-to="SearchInterface">
+
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.user.theme.chrome.Chrome" />
+
+    <entry-point class='gwt.hibernate.test.client.SearchInterface'/>
+
+    <source path="server"/>
+    <source path="shared"/>
+    <source path="client"/>
+</module>
